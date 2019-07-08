@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <template>
+            <div>
+                <v-card>
+                    <v-card-title>
+                        Beers
+                        <v-spacer></v-spacer>
+                        <!-- <v-text-field
+                        v-model="search"
+                        append-icon="search"
+                        label="Search"
+                        single-line
+                        hide-details
+                        ></v-text-field> -->
+                    </v-card-title>
+                    <v-data-table
+                        :headers="headers"
+                        :items="beers"
+                        :pagination.sync="pagination"
+                        :total-items="totalBeers"
+                        :loading="loading"
+                        class="elevation-1"
+                        >
+                        <template v-slot:items="props">
+                            <td>{{ props.item.name }}</td>
+                            <td>
+                                <v-img
+                                    :src=props.item.image_url
+                                    :lazy-src=props.item.image_url
+                                    aspect-ratio="1"
+                                    class="grey lighten-2"
+                                >
+                            </td>
+                            <td>{{ props.item.tagline }}</td>
+                            <td>{{ props.item.description }}</td>
+                            <td>{{ props.item.contributed_by }}</td>
+                            <td class="text-xs-right">{{ props.item.first_brewed }}</td>
+                        </template>
+                        <!-- <template v-slot:no-data>
+                            <v-alert :value="true" color="error" icon="warning">
+                                Sorry, nothing to display here :(
+                            </v-alert>
+                        </template> -->
+                    </v-data-table>
+                </v-card>
+            </div>
+        </template>
+      </v-content>
+    </v-app>
+  </div>
+</body>
+</html>
